@@ -13,8 +13,8 @@ class Queue:
 
   def pop(self):
     if self.empty() == 1:
-      return 
-    del self.thisQueue[0]
+      return -1
+    return self.thisQueue.pop(0)
 
   def size(self):
     return len(self.thisQueue)
