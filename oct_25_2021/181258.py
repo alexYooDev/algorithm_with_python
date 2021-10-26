@@ -1,43 +1,12 @@
 import sys
+from collections import deque
 
 def input():
   return sys.stdin.readline().rstrip()
 
-class Queue:
-  
-  def __init__(self):
-    self.thisQueue = []
+d = deque()
 
-  def push(self, n):
-    self.thisQueue.append(n)
-
-  def pop(self):
-    if self.empty() == 1:
-      return -1
-    return self.thisQueue.pop(0)
-
-  def size(self):
-    return len(self.thisQueue)
-  
-  def empty(self):
-    if len(self.thisQueue) == 0:
-      return 1
-    else:
-      return 0
-
-  def front(self):
-    if len(self.thisQueue) == 0:
-      return -1
-    return self.thisQueue[0]
-
-  def back(self):
-    if len(self.thisQueue) == 0:
-      return -1
-    return self.thisQueue[-1]
-    
 n = int(input())
-
-q = Queue()
 
 for _ in range(n):
 
@@ -46,26 +15,36 @@ for _ in range(n):
 
   # 'push'인 경우 -> 뒤의 숫자를 stack에 push 한다.
   if cmd[0] == 'push':
-    q.push(int(cmd[1]))
+    d.append(int(cmd[1]))
 
   # 'pop' 인 경우 -> 스택의 맨 마지막 push된 요소를 빼내고 그 값을 출력
   if cmd[0] == 'pop':
-    print(q.pop())
+    if not d:
+      print(-1)
+    else:
+      print(d.popleft())
 
   #  'size' 인 경우 -> 스택의 길이를 출력
   if cmd[0] == 'size':
-    print(q.size())
+    print(len(d))
 
   # 'empty' 인 경우 -> 비어있는 여부를 출력
   if cmd[0] == 'empty':
-    print(q.empty())
+    if not len(d):
+      print(1)
+    else:
+      print(0)
 
   # 'front' 인 경우 -> 가장 큐 앞에 있는 값을 출력
   if cmd[0] == 'front':
-    print(q.front())
+    if not d:
+      print(-1)
+    print(d[0])
   
   #  'back' 인 경우 -> 가장 큐 뒤에 있는 값을 출력
   if cmd[0] == 'back':
-    print(q.back())
+    if not d:
+      print(-1)
+    print(d[-1])
 
 

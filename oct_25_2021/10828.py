@@ -50,7 +50,7 @@ s = Stack()
 for _ in range(n):
 
   # 명령어를 입력 (push, pop, top, empty, size)
-  cmd = input().strip().split()
+  cmd = input().split()
 
   # 'push'인 경우 -> 뒤의 숫자를 stack에 push 한다.
   if cmd[0] == 'push':
