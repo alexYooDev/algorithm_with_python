@@ -55,7 +55,7 @@ for _ in range(T):
   for c in b:
 
     if c == '(':
-      s.push(c)
+      s.push(')')
       
     else:
       if s.empty() == 1:
